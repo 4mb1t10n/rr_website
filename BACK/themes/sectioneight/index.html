@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">-->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="stylesheet" href="styles/index.css">
+
+</head>
+<body>
+
+<div class="wrap">
+    <!-- HEADER -->
+    <header class="header" >
+        <div class="container">
+            <div class="header__flex">
+                <div class="header__burger"><span></span><span></span><span></span></div>
+                <div class="header__block">
+    
+                    <a class="header__logo img " href="./../index.html">
+                        <img src="../img/logo.svg" alt="Logo">
+                    </a>
+                    <div class="header__menu">
+                        <div class="header__menu-list">
+                            <a href="#main">section 8</a>
+                            <a href="#works">How it works</a>
+                            <a href="#why">Why Us</a>
+                            <a href="#testimonials">Testimonials</a>
+                            <a href="#faq">FAQs</a>
+                            <a href="#contact">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__right">
+                    <a href="tel:+1 (555) 000-0000" class="header__phone ">
+                        <span class="img"> <img src="./../img/phone.svg" alt=""></span>
+                        <span>+1 (555) 000-0000</span>
+                    </a>
+                    <a class="header__phone-mob img" href="tel:+1 (555) 000-0000">
+                        <img src="./../img/phone.svg" alt="">
+                    </a>
+                    <button class="header__close">
+                        <img src="./../img/xxx.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="modal modal__thank">
+        <div class="modal__wrap">
+            <div class="modal__content ">
+                <div class="modal__close img">
+                    <img src="./../img/close.svg" alt="">
+                </div>
+                <div class="modal__overflow">
+                    <div class="modal__block">
+                        <h3 class="section__title">Thank you! </h3>
+                        <p class="section__text">text text text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal modal__video">
+        <div class="modal__wrap">
+            <div class="modal__content ">
+                <div class="modal__close img">
+                    <img src="./../img/close.svg" alt="">
+                </div>
+                <div class="modal__overflow">
+                    <div class="modal__video-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal__contact">
+        <div class="modal__wrap">
+            <div class="modal__content ">
+                <div class="modal__close img">
+                    <img src="./../img/close.svg" alt="">
+                </div>
+                <div class="modal__overflow">
+                    <form action="" class="form form__contact-modal">
+                        <h2 class="section__title">Reserve Your Spot</h2>
+                        <input type="hidden" name="action" value="contact">
+                        <div class="form__input">
+                            <input type="text" name="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form__input">
+                            <input type="text" name="phone" placeholder="Enter your phone number">
+                        </div>
+    
+                        <div class="form__checkbox">
+                            <input type="checkbox" id="check1" name="terms_conditions">
+                            <label for="check1">I agree to the terms and conditions</label>
+                        </div>
+    
+                        <button class="section__button ">Send message</button>
+    
+    
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- /HEADER -->
+
+    <section class="banner">
+        <div class="container">
+            <div class="banner__flex">
+                <div class="banner__info">
+                    <h1 class="banner__title">Earn on real estate <br> investments  with guaranteed income from <span>Rent Ready S8</span></h1>
+                    <p class="section__subtitle">A few sentences about the program and the uniqueness of the service, for example, how Section 8 provides stable rental income.</p>
+                    <a href="" class="section__button">Learn more</a>
+                </div>
+                <div class="banner__img ">
+                    <div class="banner__video img">
+                        <img class="banner__video-poster" src="./img/banner.png" data-video="https://www.youtube.com/embed/2JyW4yAyTl0?autoplay=1">
+                        <div class="banner__video-play"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="why" id="why">
+        <div class="container">
+            <h2 class="section__title no-effect">Why Section 8?</h2>
+            <div class="why__block">
+                <div class="swiper why__slider">
+                    <div class="why__list swiper-wrapper">
+                        <div class="why__item swiper-slide">
+                            <div class="why__content">
+                                <div class="why__img img">
+                                    <img src="./img/why.jpeg" alt="">
+                                </div>
+                                <div class="why__right">
+                                    <div class="why__info">
+                                        <h3>What is section 8 and why its better than regular market rate</h3>
+                                        <p>A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                                Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                                Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.</p>
+                                    </div>
+                                    <div class="why__nav section__nav">
+                                        <button class="swiper-button-prev section__prev why__prev"></button>
+                                        <button class="swiper-button-next section__next why__next"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="why__item swiper-slide">
+                            <div class="why__content">
+                                <div class="why__img img">
+                                    <img src="./img/why.jpeg" alt="">
+                                </div>
+                                <div class="why__right">
+                                    <div class="why__info">
+                                        <h3>What is section 8 and why its better than regular market rate</h3>
+                                        <p>A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                            Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                            Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.</p>
+                                    </div>
+                                    <div class="why__nav section__nav">
+                                        <button class="swiper-button-prev section__prev why__prev"></button>
+                                        <button class="swiper-button-next section__next why__next"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="why__item swiper-slide">
+                            <div class="why__content">
+                                <div class="why__img img">
+                                    <img src="./img/why.jpeg" alt="">
+                                </div>
+                                <div class="why__right">
+                                    <div class="why__info">
+                                        <h3>What is section 8 and why its better than regular market rate</h3>
+                                        <p>A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                            Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.A brief explanation of Section 8: Explain what the program is and how it guarantees a stable rental income.
+                                            Why Section 8 is beneficial for investors: For example, minimizing the risk of non-payment, constant demand, stable income.</p>
+                                    </div>
+                                    <div class="why__nav section__nav">
+                                        <button class="swiper-button-prev section__prev why__prev"></button>
+                                        <button class="swiper-button-next section__next why__next"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <section class="invest">
+        <div class="container">
+            <h2 class="section__title">
+                Why invest in Toledo?
+            </h2>
+            <h2 class="section__text center">
+                Named 2024's hottest market by Realtor.com
+            </h2>
+            <div class="invest__list">
+                <div class="invest__item">
+                    <div class="invest__img img">
+                        <img src="./img/invest1.svg" alt="">
+                    </div>
+                    <div class="invest__flex">
+                        <h3 class="invest__title">
+                            Landlord Friendly
+                        </h3>
+                        <span class="invest__subtitle">
+                            easy evictions
+                        </span>
+                    </div>
+                </div>
+                <div class="invest__item">
+                    <div class="invest__img img">
+                        <img src="./img/invest2.svg" alt="">
+                    </div>
+                    <div class="invest__flex">
+
+                        <h3 class="invest__title">
+                            Low Purchase Price
+                        </h3>
+                        <span class="invest__subtitle">
+                            $50k to 80k
+                        </span>
+                    </div>
+                </div>
+                <div class="invest__item">
+                    <div class="invest__img img">
+                        <img src="./img/invest3.svg" alt="">
+                    </div>
+                    <div class="invest__flex">
+
+                        <h3 class="invest__title">
+                            High Rent
+                        </h3>
+                        <span class="invest__subtitle">
+                            $1,100 to $1,500
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="invest__banner img">
+                <img src="./img/city.png" alt="">
+            </div>
+           
+        </div>
+
+
+    </section>
+    <section class="statistics">
+        <div class="container">
+            <h2 class="section__title">Statistics of income</h2>
+            <h2 class="section__text center">A brief explanation of Section 8: Explain what the program is and how it guarantees a stable </h2>
+            <div class="statistics__block">
+                <ul class="statistics__list">
+                    <li class="statistics__item">
+                        <h3><span class="counter" data-target="30">0</span>%+</h3>
+                        <h4>Cash Return</h4>
+                    </li>
+                    <li class="statistics__item">
+                        <h3><<span class="counter" data-target="5">0</span> Year</h3>
+                        <h4>Payback Period</h4>
+                    </li>
+                    <li class="statistics__item">
+                        <h3><span class="counter" data-target="50">0</span>%</h3>
+                        <h4>ROI</h4>
+                    </li>
+                    <li class="statistics__item">
+                        <h3><span class="counter" data-target="50">0</span>%</h3>
+                        <h4>ROI</h4>
+                    </li>
+                </ul>
+                <div class="statistics__chart">
+                    <div id="chartData" data-chart='{
+                        "labels": ["0", "5", "10", "15", "20", "25", "30"],
+                        "series": [
+                        [0, 300, 600,1000],
+                        [0, 200, 400, 600, 900],
+                        [0, 100, 200, 300, 400, 500, 700]
+                        ],
+                        "legend": ["Cashflow", "Equity", "Tax Saving"]
+                    }'>
+                    </div>
+                    <canvas  class="chart__canvas"  height="300" ></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="solution">
+        <div class="container">
+            <h2 class="section__title">Our Full-Service Solution</h2>
+            <h2 class="section__text center">Advantages of cooperation with the company</h2>
+            <div class="solution__block">
+                <div class="swiper solution__slider">
+                    <div class="solution__list swiper-wrapper">
+                        <div class="solution__item swiper-slide">
+                            <div class="solution__header">
+                                <h2 class="solution__title">Advantage</h2>
+                                <div class="solution__icon img">
+                                    <img src="./img/coins.svg" alt="">
+                                </div>
+                            </div>
+                            <p class="section__text">
+                                A brief explanation of Section 8: Explain what the program A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable
+                            </p>
+                        </div>
+                        <div class="solution__item swiper-slide">
+                            <div class="solution__header">
+                                <h2 class="solution__title">Advantage</h2>
+                                <div class="solution__icon img">
+                                    <img src="./img/coins.svg" alt="">
+                                </div>
+                            </div>
+                            <p class="section__text">
+                                A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable
+                            </p>
+                        </div>
+                        <div class="solution__item swiper-slide">
+                            <div class="solution__header">
+                                <h2 class="solution__title">Advantage</h2>
+                                <div class="solution__icon img">
+                                    <img src="./img/coins.svg" alt="">
+                                </div>
+                            </div>
+                            <p class="section__text">
+                                A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable A brief explanation of Section 8: Explain what the program is and how it guarantees a stable
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="solution__nav section__nav">
+                    <button class="swiper-button-prev solution__prev section__prev"></button>
+                    <div class="swiper-pagination solution__pagination section__pagination"></div>
+                    <button class="swiper-button-next solution__next section__next"></button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="works" id="works">
+        <div class="container">
+            <div class="works__sticky">
+                <h2 class="section__title">How it works?</h2>
+                <h2 class="section__text center">A brief explanation of Section 8: Explain what the program is and how it guarantees a stable </h2>
+            </div>
+            <div class="works__block">
+                <div class="works__gradient">
+
+                </div>
+                <ul class="works__list">
+
+                    <li class="works__item">
+                        <div class="works__count">1</div>
+
+                        <div class="works__content">
+                            <h3 class="works__content-title">Launch (Week 1)</h3>
+                            <div class="works__content-info" >
+                                <div class="img">
+                                    <img src="./img/icons.svg" alt="">
+                                </div>
+                                <ul class="works__content-list" >
+                                    <li>Sign agreement</li>
+                                    <li>Submit $2,000 deposit</li>
+                                    <li>Consultation</li>
+                                    <li>Access our lender network</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="works__item">
+                        <div class="works__count">2</div>
+                        <div class="works__content">
+                            <h3 class="works__content-title">Launch (Week 1)</h3>
+                            <div class="works__content-info" >
+                                <div class="img">
+                                    <img src="./img/icons.svg" alt="">
+                                </div>
+                                <ul class="works__content-list" >
+                                    <li>Sign agreement</li>
+                                    <li>Submit $2,000 deposit</li>
+                                    <li>Consultation</li>
+                                    <li>Access our lender network</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="works__item">
+                        <div class="works__count">3</div>
+                        <div class="works__content">
+                            <h3 class="works__content-title">Launch (Week 1)</h3>
+                            <div class="works__content-info" >
+                                <div class="img">
+                                    <img src="./img/icons.svg" alt="">
+                                </div>
+                                <ul class="works__content-list" >
+                                    <li>Sign agreement</li>
+                                    <li>Submit $2,000 deposit</li>
+                                    <li>Consultation</li>
+                                    <li>Access our lender network</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="works__item">
+                        <div class="works__count">4</div>
+                        <div class="works__content">
+                            <h3 class="works__content-title">Launch (Week 1)</h3>
+                            <div class="works__content-info" >
+                                <div class="img">
+                                    <img src="./img/icons.svg" alt="">
+                                </div>
+                                <ul class="works__content-list" >
+                                    <li>Sign agreement</li>
+                                    <li>Submit $2,000 deposit</li>
+                                    <li>Consultation</li>
+                                    <li>Access our lender network</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="works__item">
+                        <div class="works__count">5</div>
+                        <div class="works__content">
+                            <h3 class="works__content-title">Launch (Week 1)</h3>
+                            <div class="works__content-info" >
+                                <div class="img">
+                                    <img src="./img/icons.svg" alt="">
+                                </div>
+                                <ul class="works__content-list" >
+                                    <li>Sign agreement</li>
+                                    <li>Submit $2,000 deposit</li>
+                                    <li>Consultation</li>
+                                    <li>Access our lender network</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </section>
+    <section class="investment">
+        <div class="container">
+            <h2 class="section__title">Investment Performance Examples:</h2>
+            <p class="section__text center">A brief explanation of Section 8: Explain what the program is and how it guarantees a stable </p>
+            <div class="investment__block">
+                <div class="swiper investment__slider">
+                    <div class="investment__list swiper-wrapper">
+                        <div class="investment__item swiper-slide">
+                            <div class="investment__img img">
+                                <img src="./img/invest.png" alt="">
+                            </div>
+                            <div class="investment__price">
+                                <div class="investment__price-item">
+                                    <h3>Purchase Price:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Rental Income:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Renovation Cost:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item bold">
+                                    <h3>ROI (Return on Investment):</h3><span>20%</span>
+                                </div>
+                            </div>
+
+                            <div class="investment__quote">
+                                <div class="investment__quote-img img">
+                                    <img src="./img/user.png" alt="">
+                                </div>
+                                <p class="investment__quote-text">
+                                    "Investing with Rent Ready S8 LLC was the best decision I made! My return was 12% in the first year, and the income has been stable. The team of professionals supported me every step of the way! <span>— John D., Investor.</span>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="investment__item swiper-slide">
+                            <div class="investment__img img">
+                                <img src="./img/invest.png" alt="">
+                            </div>
+                            <div class="investment__price">
+                                <div class="investment__price-item">
+                                    <h3>Purchase Price:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Rental Income:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Renovation Cost:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item bold">
+                                    <h3>ROI (Return on Investment):</h3><span>20%</span>
+                                </div>
+                            </div>
+
+                            <div class="investment__quote">
+                                <div class="investment__quote-img img">
+                                    <img src="./img/user.png" alt="">
+                                </div>
+                                <p class="investment__quote-text">
+                                    "Investing with Rent Ready S8 LLC was the best decision I made! My return was 12% in the first year, and the income has been stable. The team of professionals supported me every step of the way! <span>— John D., Investor.</span>
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="investment__item swiper-slide">
+                            <div class="investment__img img">
+                                <img src="./img/invest.png" alt="">
+                            </div>
+                            <div class="investment__price">
+                                <div class="investment__price-item">
+                                    <h3>Purchase Price:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Rental Income:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item">
+                                    <h3>Renovation Cost:</h3><span>20.000$</span>
+                                </div>
+                                <div class="investment__price-item bold">
+                                    <h3>ROI (Return on Investment):</h3><span>20%</span>
+                                </div>
+                            </div>
+
+                            <div class="investment__quote">
+                                <div class="investment__quote-img img">
+                                    <img src="./img/user.png" alt="">
+                                </div>
+                                <p class="investment__quote-text">
+                                    "Investing with Rent Ready S8 LLC was the best decision I made! My return was 12% in the first year, and the income has been stable. The team of professionals supported me every step of the way! <span>— John D., Investor.</span>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="investment__nav section__nav">
+                    <button class="swiper-button-prev investment__prev section__prev"></button>
+                    <div class="swiper-pagination investment__pagination section__pagination"></div>
+                    <button class="swiper-button-next investment__next section__next"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="packages">
+        <div class="container">
+            <h2 class="section__title">All-Inclusive Package</h2>
+            <p class="section__text center">Over $23K in Combined Value</p>
+            <div class="packages__block">
+
+                <div class="packages__investment">
+                    <div class="packages__investment-icon img">
+                        <img src="./img/packages.svg" alt="">
+                    </div>
+                    <h3>Your Investment:</h3>
+                    <ul class="packages__investment-list">
+                        <li> Save $11,840+ compared to individual services.</li>
+                        <li> One predictable payment.</li>
+                        <li> No hidden costs</li>
+                        <li> Complete done-for-you solution.</li>
+                        <li> Proven S8 expertise</li>
+                    </ul>
+                    <button class="section__button packages__reserved ">Reserve Your Spot</button>
+
+                </div>
+                <div class="packages__total">
+                    <ul class="packages__total-list">
+                        <li class="packages__total-item">
+                            <h2>Finding</h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Investment Strategy Consultation </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations  </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations </h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations</h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Expert Seller Negotiations</h2>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="packages__total-item">
+                            <h2>Finding</h2>
+                            <span>$1,000</span>
+                        </li>
+                    </ul>
+                    <div class="packages__total-bottom">
+                        <div class="packages__total-price">
+                            <h2>TOTAL PRICE</h2>
+                            <h3>23,000 $</h3>
+                        </div>
+                        <div class="packages__total-inclusive">
+                            <h2>All-inclusive:</h2>
+                            <h3>12,000$</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="contact" id="contact">
+        <div class="container">
+            <div class="contact__flex">
+                <div class="contact__form">
+                    <form action="" class="form form__contact">
+                        <h2 class="section__title">Contact us</h2>
+                        <input type="hidden" name="action" value="contact">
+                        <div class="form__input">
+                            <input type="text" name="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form__input">
+                            <input type="text" name="phone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form__checkbox">
+                            <input type="checkbox" id="check" name="terms_conditions">
+                            <label for="check">I agree to the terms and conditions</label>
+                        </div>
+
+                        <button class="section__button ">Send message</button>
+
+                        <div class="form__link">
+                            <a href="tel:+15550000000"> <div class="form__link-blue"><img src="./img/phoneblue.svg" alt=""><span>Phone:</span></div><span>+1 (555) 000-0000</span></a>
+                            <a href="mailto:e-mailemail@gmail.com"> <div class="form__link-blue"><img src="./img/mail.svg" alt=""><span>Email:</span></div><span>e-mailemail@gmail.com</span></a>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact__img img">
+                    <img src="./img/contact.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <section class="faq" id="faq">
+        <div class="container ">
+            <h2 class="section__title">Frequently asked questions</h2>
+            <h2 class="section__text center">Everything you need to know </h2>
+            <ul class="faq__list">
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>Is there a free trial available?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.</p>
+                    </div>
+                </li>
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>Can I change my plan later?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Lorem ipsum dolor sit amet consectetur. Arcu morbi at nisl rhoncus quam. Faucibus praesent fringilla lectus neque sed. Sagittis fermentum fusce sit vulputate varius egestas scelerisque senectus. </p>
+                    </div>
+                </li>
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>What is your cancellation policy?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Lorem ipsum dolor sit amet consectetur. Arcu morbi at nisl rhoncus quam. Faucibus praesent fringilla lectus neque sed. Sagittis fermentum fusce sit vulputate varius egestas scelerisque senectus. </p>
+                    </div>
+                </li>
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>Can other info be added to an invoice?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Lorem ipsum dolor sit amet consectetur. Arcu morbi at nisl rhoncus quam. Faucibus praesent fringilla lectus neque sed. Sagittis fermentum fusce sit vulputate varius egestas scelerisque senectus. </p>
+                    </div>
+                </li>
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>How does billing work?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Lorem ipsum dolor sit amet consectetur. Arcu morbi at nisl rhoncus quam. Faucibus praesent fringilla lectus neque sed. Sagittis fermentum fusce sit vulputate varius egestas scelerisque senectus. </p>
+                    </div>
+                </li>
+
+                <li class="faq__item">
+                    <div class="faq__header">
+                        <h3>How do I change my account email?</h3>
+                    </div>
+                    <div class="faq__content content">
+                        <p>Lorem ipsum dolor sit amet consectetur. Arcu morbi at nisl rhoncus quam. Faucibus praesent fringilla lectus neque sed. Sagittis fermentum fusce sit vulputate varius egestas scelerisque senectus. </p>
+                    </div>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__flex">
+                <div class="footer__block">
+                    <div class="footer__logo img">
+                        <img src="./../img/logo.svg" alt="">
+                    </div>
+                    <p class="section__text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                </div>
+                <div class="footer__block">
+                    <h2 class="footer__contact">Contact Us</h2>
+                    <a href="tel:+10000000">+1 000 00 00</a>
+                    <a href="mailto:email@email.com">email@email.com</a>
+                    <div class="footer__social">
+                        <a href="" class="img">
+                            <img src="./../img/Facebook.svg" alt="">
+                        </a>
+                        <a href="" class="img">
+                            <img src="./../img/Insta.svg" alt="">
+                        </a>
+                        <a href="" class="img">
+                            <img src="./../img/X.svg" alt="">
+                        </a>
+                        <a href="" class="img">
+                            <img src="./../img/Insta.svg" alt="">
+                        </a>
+                        <a href="" class="img">
+                            <img src="./../img/Youtube.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="scripts/plagins/device.js" ></script>
+<script type="text/javascript" src="scripts/plagins/jquery.validate.min.js" ></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="scripts/develop/index.js" ></script>
+
+</body>
+</html>
