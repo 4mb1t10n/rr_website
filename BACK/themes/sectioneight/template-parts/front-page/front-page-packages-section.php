@@ -31,7 +31,7 @@ public function sectionScripts()
 public function render()
 { ?>
 
-    <section class="packages">
+    <section class="packages" id="package">
         <div class="container">
             <?php if(!empty($this->title)) : ?>
             <h2 class="section__title"><?php echo $this->title; ?></h2>

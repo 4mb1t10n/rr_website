@@ -723,13 +723,13 @@ body {
   height: 5.6rem;
 }
 
-.works__content-info li {
+.works__content-list li {
   position: relative;
   font: 400 1.6rem/2.1rem var(--Poppins);
   padding-left: 1.8rem;
 }
 
-.works__content-info li:after {
+.works__content-list li:after {
   content: "";
   position: absolute;
   width: 0.6rem;
@@ -932,7 +932,7 @@ body {
   margin: 2rem 0 6.4rem;
 }
 
-.investment__price {
+.investment__price-wrap {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -940,23 +940,38 @@ body {
   -ms-flex-pack: justify;
       justify-content: space-between;
   gap: 0.4rem 0.6rem;
-  margin: 4rem 0 4rem;
+  margin: 1.2rem 0 0;
   position: relative;
 }
 
-.investment__price:after {
+.investment__price{
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+  width: calc(50% - 0.3rem);
+}
+
+
+
+
+
+.investment__price-wrap:after {
   content: '';
   position: absolute;
   width: 100%;
   height: 0.1rem;
-  bottom: -3.4rem;
+  top: -1.2rem;
   left: 0;
   z-index: -1;
   background-color: var(--color-blue);
+  /*display: none;*/
 }
 
 .investment__price-item {
-  width: calc(50% - 0.3rem);
+
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -997,7 +1012,10 @@ body {
   height: 21.6rem;
   position: relative;
 }
-
+.investment__address > *{
+  padding: 1.2rem 0 1.4rem;
+  font: 500 1.8rem/2.2rem var(--Mulish);
+}
 .investment__img:after {
   content: '';
   position: absolute;
@@ -1039,6 +1057,7 @@ body {
   display: flex;
   gap: 2.4rem;
   padding-top: 1.6rem;
+  display: none;
 }
 
 .investment__quote-img {
@@ -1125,6 +1144,16 @@ body {
 .statistics h4 {
   font: 400 1.8rem/2.7rem var(--Poppins);
   color: var(--color-grey);
+  text-align: center;
+}
+
+.statistics h4 span{
+  font: 400 1.6rem/2.2rem var(--Poppins);
+  color: var(--color-grey);
+  display: block;
+  text-align: center;
+  font-style: italic;
+  padding-top: 0.6rem;
 }
 
 .swiper-slide {
@@ -2273,6 +2302,14 @@ input:-internal-autofill-selected {
   .works__content-info li {
     font-size: 1.4rem;
     line-height: 1.8rem;
+  }
+  .investment__price-wrap{
+    flex-direction: column;
+    gap:0.4rem;
+  }
+  .investment__price{
+    width: 100%;
+    margin: 0;
   }
 }
 

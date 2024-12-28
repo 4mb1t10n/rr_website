@@ -463,6 +463,7 @@ $(document).ready(function () {
     });
 
     toggleModal($('.modal__contact'), $('.packages__reserved'));
+    toggleModal($('.modal__contact'), $('.banner .section__button'));
 
     $(window).on('load scroll', animate);
     $(window).on('load scroll', showChart);

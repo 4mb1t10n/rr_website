@@ -43,9 +43,11 @@ public function render()
                                 <img src="<?php echo $item['image'] ?>" alt="">
                             </div>
                         </div>
-                        <p class="section__text">
-                            <?php echo $item['text']; ?>
-                        </p>
+                        <ul class="works__content-list" >
+                            <?php foreach($item['contents'] as $content ) : ?>
+                            <li><?php echo $content['text']; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                     <?php endforeach; ?>
                 </div>

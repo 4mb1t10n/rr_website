@@ -38,8 +38,8 @@ class Front_Page_Statistics_Section
                      <ul class="statistics__list">
                          <?php foreach ($this->list as $item): ?>
                          <li class="statistics__item">
-                             <h3><span class="counter" data-target="<?php echo $item['count']; ?>"><?php echo $item['text'];?></h3>
-                             <h4><?php echo $item['title']; ?></h4>
+                             <h3><?php echo $item['text'];?><span class="counter" data-target="<?php echo $item['count']; ?>">0</span></h3>
+                             <h4><?php echo $item['title']; ?> <span><?php echo $item['subtitle']; ?></span></h4>
                          </li>
                             <?php endforeach; ?>
                      </ul>

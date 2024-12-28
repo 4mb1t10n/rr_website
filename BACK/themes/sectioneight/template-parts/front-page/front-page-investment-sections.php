@@ -41,26 +41,37 @@ class Front_Page_Investment_Section
                                 <div class="investment__img img">
                                     <img src="<?php echo $item['image']; ?>" alt="">
                                 </div>
-                                <?php if(!empty($item['prices'])) : ?>
-                                <div class="investment__price">
-                                    <?php  ?>
-                                    <?php foreach ($item['prices'] as $index => $price ) : ?>
-                                    <?php $is_fourth = ($index === 3); ?>
-                                    <div class="investment__price-item <?php echo $is_fourth ? 'bold' : ''; ?> ">
-                                        <h3><?php echo $price['title']; ?></h3><span><?php echo $price['price']; ?></span>
-                                    </div>
-                                    <?php endforeach; ?>
+                                <div class="investment__address">
+                                    <h3><?php echo $item['adress']; ?></h3>
                                 </div>
-                                <?php endif; ?>
-                                <div class="investment__quote">
-                                    <div class="investment__quote-img img">
-                                        <img src="<?php echo $item['icon'] ?>" alt="">
-                                    </div>
-                                    <p class="investment__quote-text">
-                                         <?php echo $item['text']; ?>
-                                    </p>
-                                </div>
+                                <?php if (!empty($item['prices_left']) && !empty($item['prices_right'])) : ?>
+                                    <div class="investment__price-wrap">
 
+                                        <div class="investment__price">
+                                            <?php foreach ($item['prices_left'] as $price_left) : ?>
+                                                <?php
+
+                                                $is_bold = !empty($price_left['bold']) && $price_left ['bold'];
+                                                ?>
+                                                <div class="investment__price-item <?php echo $is_bold ? 'bold' : ''; ?>">
+                                                    <h3><?php echo $price_left['title']; ?></h3><span><?php echo $price_left['price']; ?></span>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+
+                                        <div class="investment__price">
+                                            <?php foreach ($item['prices_right'] as  $price_right) : ?>
+                                                <?php
+
+                                                $is_bold = !empty($price_right['bold']) && $price_right['bold'];
+                                                ?>
+                                                <div class="investment__price-item <?php echo $is_bold ? 'bold' : ''; ?>">
+                                                    <h3><?php echo $price_right['title']; ?></h3><span><?php echo $price_right['price']; ?></span>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <?php endforeach; ?>
                         </div>
