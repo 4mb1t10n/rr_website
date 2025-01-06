@@ -21,3 +21,6 @@ define('NONCE_SALT', 'your_unique_key');
 define('UPLOADS', 'wp-content/uploads');
 
 define('WP_DEBUG', false);
+
+define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_LOGIN', true);
