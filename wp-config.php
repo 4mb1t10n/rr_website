@@ -17,6 +17,9 @@ define('NONCE_SALT',       'e!~:[|J+`42srHBWO<)c%S8~*P]bS>xBd1Z?G#%)0u,M-=qav?.t
 
 $table_prefix = 'wp_';
 
+define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_LOGIN', true);
+
 define('WP_DEBUG', false);
 if (!defined('ABSPATH')) {
     define('ABSPATH', __DIR__ . '/');
