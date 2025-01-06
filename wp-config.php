@@ -1,5 +1,5 @@
 <?php
-define('DB_NAME', getenv('MYSQL_DATABASE'));
+define('DB_NAME', getenv('MYSQLDATABASE'));
 define('DB_USER', getenv('MYSQLUSER'));
 define('DB_PASSWORD', getenv('MYSQLPASSWORD'));
 define('DB_HOST', getenv('MYSQLHOST'));
