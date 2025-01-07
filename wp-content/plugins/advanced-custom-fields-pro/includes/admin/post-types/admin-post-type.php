@@ -2,18 +2,18 @@
 /**
  * ACF Admin Post Type Class
  *
- *  @class ACF_Admin_Post_Type
+ * @class ACF_Admin_Post_Type
  *
- *  @package    ACF
- *  @subpackage Admin
+ * @package    ACF
+ * @subpackage Admin
  */
 
 if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 
 	/**
-	 *  ACF Admin Post Type Class
+	 * ACF Admin Post Type Class
 	 *
-	 *  All the logic for editing a post type.
+	 * All the logic for editing a post type.
 	 */
 	class ACF_Admin_Post_type extends ACF_Admin_Internal_Post_Type {
 
@@ -64,7 +64,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		 *
 		 * @since 6.1
 		 *
-		 * @param bool $created True if the post was just created.
+		 * @param boolean $created True if the post was just created.
 		 * @return string
 		 */
 		public function post_type_created_message( $created = false ) {
@@ -74,18 +74,23 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 
 			/* translators: %s post type name */
 			$item_saved_text = sprintf( __( '%s post type updated', 'acf' ), $title );
-			/* translators: %s post type name */
-			$add_fields_text = sprintf( __( 'Add fields to %s', 'acf' ), $title );
 
 			if ( $created ) {
 				/* translators: %s post type name */
 				$item_saved_text = sprintf( __( '%s post type created', 'acf' ), $title );
 			}
 
-			$add_fields_link      = wp_nonce_url(
+			$add_fields_link = wp_nonce_url(
 				admin_url( 'post-new.php?post_type=acf-field-group&use_post_type=' . $post_id ),
 				'add-fields-' . $post_id
 			);
+
+			$create_post_type_link    = admin_url( 'post-new.php?post_type=acf-post-type' );
+			$duplicate_post_type_link = wp_nonce_url(
+				admin_url( 'post-new.php?post_type=acf-post-type&use_post_type=' . $post_id ),
+				'acfduplicate-' . $post_id
+			);
+
 			$create_taxonomy_link = wp_nonce_url(
 				admin_url( 'post-new.php?post_type=acf-taxonomy&use_post_type=' . $post_id ),
 				'create-taxonomy-' . $post_id
@@ -94,9 +99,11 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 			ob_start(); ?>
 			<p class="acf-item-saved-text"><?php echo esc_html( $item_saved_text ); ?></p>
 			<div class="acf-item-saved-links">
-				<a href="<?php echo esc_url( $add_fields_link ); ?>"><?php echo esc_html( $add_fields_text ); ?></a>
-				<a class="acf-link-field-groups" href="#"><?php esc_html_e( 'Link existing field groups', 'acf' ); ?></a>
-				<a href="<?php echo esc_url( $create_taxonomy_link ); ?>"><?php esc_html_e( 'Create new taxonomy', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $add_fields_link ); ?>"><?php esc_html_e( 'Add fields', 'acf' ); ?></a>
+				<a class="acf-link-field-groups" href="#"><?php esc_html_e( 'Link field groups', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $create_post_type_link ); ?>"><?php esc_html_e( 'Create post type', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $duplicate_post_type_link ); ?>"><?php esc_html_e( 'Duplicate post type', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $create_taxonomy_link ); ?>"><?php esc_html_e( 'Create taxonomy', 'acf' ); ?></a>
 			</div>
 			<?php
 			return ob_get_clean();
@@ -106,8 +113,6 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		 * Enqueues any scripts necessary for internal post type.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @return void
 		 */
 		public function admin_enqueue_scripts() {
 
@@ -131,9 +136,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * Sets up all functionality for the post type edit page to work.
 		 *
-		 * @since   3.1.8
-		 *
-		 * @return  void
+		 * @since 3.1.8
 		 */
 		public function admin_head() {
 
@@ -171,8 +174,6 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 
 		/**
 		 * This action will allow ACF to render metaboxes after the title.
-		 *
-		 * @return void
 		 */
 		public function edit_form_after_title() {
 
@@ -193,10 +194,10 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * This function will add extra HTML to the acf form data element
 		 *
-		 *  @since   5.3.8
+		 * @since   5.3.8
 		 *
-		 *  @param array $args Arguments array to pass through to action.
-		 *  @return void
+		 * @param array $args Arguments array to pass through to action.
+		 * @return void
 		 */
 		public function form_data( $args ) {
 			do_action( 'acf/post_type/form_data', $args );
@@ -217,9 +218,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * Admin footer third party hook support
 		 *
-		 * @since   5.3.2
-		 *
-		 * @return void
+		 * @since 5.3.2
 		 */
 		public function admin_footer() {
 			do_action( 'acf/post_type/admin_footer' );
@@ -240,9 +239,8 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * Sets the "Edit Post Type" screen to use a one-column layout.
 		 *
-		 * @param int $columns Number of columns for layout.
-		 *
-		 * @return int
+		 * @param integer $columns Number of columns for layout.
+		 * @return integer
 		 */
 		public function screen_layout( $columns = 0 ) {
 			return 1;
@@ -251,8 +249,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * Force basic settings to always be visible
 		 *
-		 * @param array $hidden_metaboxes The metaboxes hidden on this page.
-		 *
+		 * @param  array $hidden_metaboxes The metaboxes hidden on this page.
 		 * @return array
 		 */
 		public function force_basic_settings( $hidden_metaboxes ) {
@@ -266,7 +263,6 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		 * Force advanced settings to be visible
 		 *
 		 * @param array $hidden_metaboxes The metaboxes hidden on this page.
-		 *
 		 * @return array
 		 */
 		public function force_advanced_settings( $hidden_metaboxes ) {
@@ -279,9 +275,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * This function will customize the publish metabox
 		 *
-		 * @since   5.2.9
-		 *
-		 * @return void
+		 * @since 5.2.9
 		 */
 		public function post_submitbox_misc_actions() {
 			global $acf_post_type;
@@ -301,10 +295,9 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param int     $post_id The post ID.
-		 * @param WP_Post $post    The post object.
-		 *
-		 * @return int $post_id
+		 * @param  integer $post_id The post ID.
+		 * @param  WP_Post $post    The post object.
+		 * @return integer $post_id
 		 */
 		public function save_post( $post_id, $post ) {
 			if ( ! $this->verify_save_post( $post_id, $post ) ) {
@@ -319,6 +312,15 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 			$_POST['acf_post_type']['ID']    = $post_id;
 			$_POST['acf_post_type']['title'] = isset( $_POST['acf_post_type']['labels']['name'] ) ? $_POST['acf_post_type']['labels']['name'] : '';
 
+			if ( ! acf_get_setting( 'enable_meta_box_cb_edit' ) ) {
+				$_POST['acf_post_type']['register_meta_box_cb'] = '';
+
+				$existing_post = acf_maybe_unserialize( $post->post_content );
+				if ( ! empty( $existing_post['register_meta_box_cb'] ) ) {
+					$_POST['acf_post_type']['register_meta_box_cb'] = $existing_post['register_meta_box_cb'];
+				}
+			}
+
 			// Save the post type.
 			acf_update_internal_post_type( $_POST['acf_post_type'], $this->post_type ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Validated in verify_save_post
 			// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -331,8 +333,6 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		 * Renders HTML for the basic settings metabox.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @return void
 		 */
 		public function mb_basic_settings() {
 			global $acf_post_type;
@@ -348,18 +348,14 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 		/**
 		 * Renders the HTML for the advanced settings metabox.
 		 *
-		 * @since   5.0.0
-		 *
-		 * @return void
+		 * @since 5.0.0
 		 */
 		public function mb_advanced_settings() {
 			acf_get_view( $this->post_type . '/advanced-settings' );
 		}
-
 	}
 
 	new ACF_Admin_Post_Type();
-
 endif; // Class exists check.
 
 ?>

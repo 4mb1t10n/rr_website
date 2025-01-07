@@ -2,16 +2,6 @@
 
 global $acf_post_type;
 
-// Allow preselecting the linked taxonomies based on previously created taxonomy.
-$acf_use_taxonomy = acf_request_arg( 'use_taxonomy', false );
-if ( $acf_use_taxonomy && wp_verify_nonce( acf_request_arg( '_wpnonce' ), 'create-post-type-' . $acf_use_taxonomy ) ) {
-	$acf_linked_taxonomy = acf_get_internal_post_type( (int) $acf_use_taxonomy, 'acf-taxonomy' );
-
-	if ( $acf_linked_taxonomy && isset( $acf_linked_taxonomy['taxonomy'] ) ) {
-		$acf_post_type['taxonomies'] = array( $acf_linked_taxonomy['taxonomy'] );
-	}
-}
-
 foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label ) {
 	acf_render_field_wrap(
 		array(
@@ -21,28 +11,12 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 		)
 	);
 
+	$wrapper_class = str_replace( '_', '-', $tab_key );
+
+	echo '<div class="acf-post-type-advanced-settings acf-post-type-' . esc_attr( $wrapper_class ) . '-settings">';
+
 	switch ( $tab_key ) {
 		case 'general':
-			acf_render_field_wrap(
-				array(
-					'type'         => 'select',
-					'name'         => 'taxonomies',
-					'key'          => 'taxonomies',
-					'prefix'       => 'acf_post_type',
-					'value'        => $acf_post_type['taxonomies'],
-					'label'        => __( 'Linked Taxonomies', 'acf' ),
-					'instructions' => __( 'Select existing taxonomies to classify items of the post type.', 'acf' ),
-					'choices'      => acf_get_taxonomy_labels(),
-					'ui'           => true,
-					'allow_null'   => true,
-					'multiple'     => true,
-				),
-				'div',
-				'field'
-			);
-
-			acf_render_field_wrap( array( 'type' => 'seperator' ) );
-
 			$acf_available_supports = array(
 				'title'           => __( 'Title', 'acf' ),
 				'author'          => __( 'Author', 'acf' ),
@@ -111,8 +85,8 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 			break;
 		case 'labels':
 			echo '<div class="acf-field acf-regenerate-labels-bar">';
-			echo '<span class="acf-btn acf-btn-sm acf-btn-clear acf-regenerate-labels"><i class="acf-icon acf-icon-regenerate"></i>' . __( 'Regenerate', 'acf' ) . '</span>';
-			echo '<span class="acf-btn acf-btn-sm acf-btn-clear acf-clear-labels"><i class="acf-icon acf-icon-trash"></i>' . __( 'Clear', 'acf' ) . '</span>';
+			echo '<span class="acf-btn acf-btn-sm acf-btn-clear acf-regenerate-labels"><i class="acf-icon acf-icon-regenerate"></i>' . esc_html__( 'Regenerate', 'acf' ) . '</span>';
+			echo '<span class="acf-btn acf-btn-sm acf-btn-clear acf-clear-labels"><i class="acf-icon acf-icon-trash"></i>' . esc_html__( 'Clear', 'acf' ) . '</span>';
 			echo '<span class="acf-tip acf-labels-tip"><i class="acf-icon acf-icon-help acf-js-tooltip" title="' . esc_attr__( 'Regenerate all labels using the Singular and Plural labels', 'acf' ) . '"></i></span>';
 			echo '</div>';
 
@@ -242,9 +216,14 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'key'          => 'add_new',
 					'prefix'       => 'acf_post_type[labels]',
 					'value'        => $acf_post_type['labels']['add_new'],
+					'data'         => array(
+						/* translators: %s Singular form of post type name */
+						'label'   => __( 'Add New %s', 'acf' ),
+						'replace' => 'singular',
+					),
 					'label'        => __( 'Add New', 'acf' ),
 					'instructions' => __( 'In the post type submenu in the admin dashboard.', 'acf' ),
-					'placeholder'  => __( 'Add New', 'acf' ),
+					'placeholder'  => __( 'Add New Post', 'acf' ),
 				),
 				'div',
 				'field'
@@ -717,6 +696,22 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 				'div',
 				'field'
 			);
+
+			acf_render_field_wrap(
+				array(
+					'type'         => 'text',
+					'name'         => 'enter_title_here',
+					'key'          => 'enter_title_here',
+					'prefix'       => 'acf_post_type',
+					'value'        => $acf_post_type['enter_title_here'],
+					'label'        => __( 'Title Placeholder', 'acf' ),
+					'instructions' => __( 'In the editor used as the placeholder of the title.', 'acf' ),
+					'placeholder'  => __( 'Add title', 'acf' ),
+				),
+				'div',
+				'field'
+			);
+
 			break;
 		case 'visibility':
 			acf_render_field_wrap(
@@ -750,15 +745,6 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 						'value'    => 1,
 					),
 				)
-			);
-
-			$acf_dashicon_class_name = __( 'Dashicon class name', 'acf' );
-			$acf_dashicon_link       = '<a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">' . $acf_dashicon_class_name . '</a>';
-
-			$acf_menu_icon_instructions = sprintf(
-				/* translators: %s = "dashicon class name", link to the WordPress dashicon documentation. */
-				__( 'The icon used for the post type menu item in the admin dashboard. Can be a URL or %s to use for the icon.', 'acf' ),
-				$acf_dashicon_link
 			);
 
 			acf_render_field_wrap(
@@ -800,44 +786,91 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 				'field'
 			);
 
+			// Set the default value for the icon field.
+			$acf_default_icon_value = array(
+				'type'  => 'dashicons',
+				'value' => 'dashicons-admin-post',
+			);
+
+			if ( empty( $acf_post_type['menu_icon'] ) ) {
+				$acf_post_type['menu_icon'] = $acf_default_icon_value;
+			}
+
+			// Backwards compatibility for before the icon picker was introduced.
+			if ( is_string( $acf_post_type['menu_icon'] ) ) {
+				// If the old value was a string that starts with dashicons-, assume it's a dashicon.
+				if ( false !== strpos( $acf_post_type['menu_icon'], 'dashicons-' ) ) {
+					$acf_post_type['menu_icon'] = array(
+						'type'  => 'dashicons',
+						'value' => $acf_post_type['menu_icon'],
+					);
+				} else {
+					$acf_post_type['menu_icon'] = array(
+						'type'  => 'url',
+						'value' => $acf_post_type['menu_icon'],
+					);
+				}
+			}
+
 			acf_render_field_wrap(
 				array(
-					'type'         => 'text',
-					'name'         => 'menu_icon',
-					'key'          => 'menu_icon',
-					'prefix'       => 'acf_post_type',
-					'value'        => $acf_post_type['menu_icon'],
-					'label'        => __( 'Menu Icon', 'acf' ),
-					'placeholder'  => 'dashicons-admin-post',
-					'instructions' => $acf_menu_icon_instructions,
-					'conditions'   => array(
-						'field'    => 'show_in_menu',
-						'operator' => '==',
-						'value'    => 1,
+					'type'        => 'icon_picker',
+					'name'        => 'menu_icon',
+					'key'         => 'menu_icon',
+					'prefix'      => 'acf_post_type',
+					'value'       => $acf_post_type['menu_icon'],
+					'label'       => __( 'Menu Icon', 'acf' ),
+					'placeholder' => 'dashicons-admin-post',
+					'conditions'  => array(
+						array(
+							'field'    => 'show_in_menu',
+							'operator' => '==',
+							'value'    => '1',
+						),
+						array(
+							'field'    => 'admin_menu_parent',
+							'operator' => '==',
+							'value'    => '',
+						),
 					),
 				),
 				'div',
 				'field'
 			);
 
-			acf_render_field_wrap(
-				array(
-					'type'         => 'text',
-					'name'         => 'register_meta_box_cb',
-					'key'          => 'register_meta_box_cb',
-					'prefix'       => 'acf_post_type',
-					'value'        => $acf_post_type['register_meta_box_cb'],
-					'label'        => __( 'Custom Meta Box Callback', 'acf' ),
-					'instructions' => __( 'A PHP function name to be called when setting up the meta boxes for the edit screen.', 'acf' ),
-					'conditions'   => array(
-						'field'    => 'show_ui',
-						'operator' => '==',
-						'value'    => '1',
+			$acf_enable_meta_box_cb_edit  = acf_get_setting( 'enable_meta_box_cb_edit' );
+			$acf_meta_box_cb_instructions = __( 'A PHP function name to be called when setting up the meta boxes for the edit screen. For security, this callback will be executed in a special context without access to any superglobals like $_POST or $_GET.', 'acf' );
+
+			// Only show if user is allowed to update, or if it already has a value.
+			if ( $acf_enable_meta_box_cb_edit || ! empty( $acf_post_type['register_meta_box_cb'] ) ) {
+				if ( ! $acf_enable_meta_box_cb_edit ) {
+					if ( is_multisite() ) {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only super admin users can edit this setting.', 'acf' );
+					} else {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only admin users can edit this setting.', 'acf' );
+					}
+				}
+
+				acf_render_field_wrap(
+					array(
+						'type'         => 'text',
+						'name'         => 'register_meta_box_cb',
+						'key'          => 'register_meta_box_cb',
+						'prefix'       => 'acf_post_type',
+						'value'        => $acf_post_type['register_meta_box_cb'],
+						'label'        => __( 'Custom Meta Box Callback', 'acf' ),
+						'instructions' => $acf_meta_box_cb_instructions,
+						'readonly'     => ! $acf_enable_meta_box_cb_edit,
+						'conditions'   => array(
+							'field'    => 'show_ui',
+							'operator' => '==',
+							'value'    => '1',
+						),
 					),
-				),
-				'div',
-				'field'
-			);
+					'div',
+					'field'
+				);
+			}
 
 			acf_render_field_wrap(
 				array(
@@ -893,7 +926,7 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'prefix'       => 'acf_post_type',
 					'value'        => $acf_post_type['exclude_from_search'],
 					'label'        => __( 'Exclude From Search', 'acf' ),
-					'instructions' => __( 'Sets whether posts should be excluded from search results.', 'acf' ),
+					'instructions' => __( 'Sets whether posts should be excluded from search results and taxonomy archive pages.', 'acf' ),
 					'ui'           => true,
 				)
 			);
@@ -1053,7 +1086,7 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'name'         => 'with_front',
 					'key'          => 'with_front',
 					'prefix'       => 'acf_post_type[rewrite]',
-					'value'        => $acf_post_type['rewrite']['with_front'],
+					'value'        => isset( $acf_post_type['rewrite']['with_front'] ) ? $acf_post_type['rewrite']['with_front'] : true,
 					'label'        => __( 'Front URL Prefix', 'acf' ),
 					'instructions' => __( 'Alters the permalink structure to add the `WP_Rewrite::$front` prefix to URLs.', 'acf' ),
 					'ui'           => true,
@@ -1072,7 +1105,7 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'name'         => 'feeds',
 					'key'          => 'feeds',
 					'prefix'       => 'acf_post_type[rewrite]',
-					'value'        => $acf_post_type['rewrite']['feeds'],
+					'value'        => isset( $acf_post_type['rewrite']['feeds'] ) ? $acf_post_type['rewrite']['feeds'] : $acf_post_type['has_archive'],
 					'label'        => __( 'Feed URL', 'acf' ),
 					'instructions' => __( 'RSS feed URL for the post type items.', 'acf' ),
 					'ui'           => true,
@@ -1090,7 +1123,7 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'name'         => 'pages',
 					'key'          => 'pages',
 					'prefix'       => 'acf_post_type[rewrite]',
-					'value'        => $acf_post_type['rewrite']['pages'],
+					'value'        => isset( $acf_post_type['rewrite']['pages'] ) ? $acf_post_type['rewrite']['pages'] : true,
 					'label'        => __( 'Pagination', 'acf' ),
 					'instructions' => __( 'Pagination support for the items URLs such as the archives.', 'acf' ),
 					'ui'           => true,
@@ -1292,5 +1325,6 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 	}
 
 	do_action( "acf/post_type/render_settings_tab/{$tab_key}", $acf_post_type );
-}
 
+	echo '</div>';
+}
