@@ -2277,7 +2277,7 @@ input:-internal-autofill-selected {
     top: -17rem;
   }
   .works__sticky {
-    max-width: calc(100% - 13rem);
+    max-width: calc(100% - 11rem);
     margin: 0 auto;
   }
   .works__content-info {

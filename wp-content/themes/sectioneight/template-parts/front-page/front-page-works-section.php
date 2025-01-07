@@ -6,7 +6,7 @@ public function __construct()
 {
     $section_works = get_field('section_works');
     $this->title = $section_works['title'];
-    $this->text = $section_works['text'];
+    $this->subtitle = $section_works['subtitle'];
     $this->list = $section_works['list'];
 }
 
@@ -27,10 +27,10 @@ public function render()
     <div class="container">
         <div class="works__sticky">
             <?php if(!empty($this->title)) : ?>
-            <h2 class="section__title"><?php echo $this->title; ?></h2>
+                <h2 class="section__title"><?php echo $this->title; ?></h2>
             <?php endif; ?>
-            <?php if(!empty($this->text)) : ?>
-            <h2 class="section__text center"><?php echo $this->text; ?> </h2>
+            <?php if(!empty($this->subtitle)) : ?>
+                <h2 class="section__text center"><?php echo $this->subtitle; ?> </h2>
             <?php endif; ?>
         </div>
         <?php if(!empty($this->list)) : ?>

@@ -338,7 +338,7 @@ function chart() {
                     beginAtZero: true,
                     ticks: {
                         callback: function (value) {
-                            return `${value}.000 $`; // Add $ symbol to Y-axis labels
+                            return `${value},000 $`; // Add $ symbol to Y-axis labels
                         }
                     }
                 }
