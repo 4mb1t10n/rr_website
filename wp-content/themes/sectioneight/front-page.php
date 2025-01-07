@@ -1,5 +1,5 @@
 <?php /*Template Name: Front Page*/ ?>
-
+<?php var_dump(124);die; ?>
 <?php
 global $this_page_styles;
 global $this_page_scripts;
